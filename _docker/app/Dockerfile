@@ -26,7 +26,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
     --install-dir=/usr/local/bin
 
 # Install Node.js and npm
-# RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
-#     apt-get install -y nodejs npm
+RUN curl -sL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get install -y nodejs npm
 
 WORKDIR /var/www

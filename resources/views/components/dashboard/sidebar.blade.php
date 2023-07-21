@@ -23,13 +23,35 @@
                         <ul class="nav-submenu menu-content">
                             <li><a href="{{route('dashboard.productshow.index')}}">Показать продукты</a></li>
                             <li><a href="{{route('dashboard.category.index')}}">Категории</a></li>
+                            <li><a href="{{route('dashboard.product.index')}}">Продукты</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="home"></i>
+                        <span>Фото</span></a>
+                        <ul class="nav-submenu menu-content">
+                            <li><a href="{{route('dashboard.arxitektura.index')}}">АРХИТЕКТУРА</a></li>
+                            <li><a href="{{route('dashboard.gallery.index')}}">Галерея</a></li>
+                            <li><a href="{{route('dashboard.secondslider.index')}}">Второй слайдер</a></li>
+                            <li><a href="{{route('dashboard.block.index')}}">Блоков</a></li>
+                            <li><a href="{{route('dashboard.presentation.index')}}">Скачать презентацию</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
+                        <a class="nav-link menu-title link-nav" href="{{route('dashboard.words.index')}}"><i data-feather="file-text"></i>
+                            <span>Словарь</span>
+                        </a>
+                    </li>
+                    {{-- <li class="dropdown">
                         <a href="{{route('dashboard.arxitektura.index')}}" class="nav-link menu-title link-nav" ><i data-feather="file-text"></i>
                             <span>АРХИТЕКТУРА</span>
                         </a>
-                    </li>
+                    </li> --}}
+                    {{-- <li class="dropdown">
+                        <a href="{{route('dashboard.gallery.index')}}" class="nav-link menu-title link-nav" ><i data-feather="file-text"></i>
+                            <span>Галерея</span>
+                        </a>
+                    </li> --}}
+
                 </ul>
             </div>
             <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>

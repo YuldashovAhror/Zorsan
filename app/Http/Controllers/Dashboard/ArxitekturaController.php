@@ -19,7 +19,7 @@ class ArxitekturaController extends BaseController
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'photo' => 'image|mimes:jpeg,png,jpg|max:20480',
+            'photo' => 'required|image|mimes:jpeg,png,jpg|max:20480',
         ]);
         if (!empty($validatedData['photo'])) {
             $this->fileDelete('\Arxitektura', $id, 'photo');

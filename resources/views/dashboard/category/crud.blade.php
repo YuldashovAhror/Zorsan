@@ -27,7 +27,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header pb-0">
-                    <h5>Добавить Показать продукты</h5>
+                    <h5>Добавить Категории</h5>
                 </div>
                 <form action="{{ route('dashboard.category.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -70,7 +70,7 @@
                 <div class="card-header">
                     <div class="row">
                         <div class="col-md-10">
-                            <h5>Все Показать продукты</h5>
+                            <h5>Все Категории</h5>
                         </div>
                     </div>
                 </div>
