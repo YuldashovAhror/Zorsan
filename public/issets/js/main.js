@@ -215,7 +215,6 @@ $(window).on('load', () => {
         let infoOffset = $('.info').offset().top
         if (scrollTop  > infoOffset - windowHeight/2 && $(window).width() > 992) {
             let lineSize = (scrollTop/(rootFont*6.3) - 80) * 5
-            console.log(lineSize)
             $('.info-pattern').css('height', `${lineSize}%`)
         }
         
@@ -317,6 +316,5 @@ $(window).on('load', () => {
 
     new WOW({
         offset: 50,
-        mobile:  true,
     }).init();
 })

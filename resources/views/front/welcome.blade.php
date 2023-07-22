@@ -15,26 +15,26 @@
     <link rel="stylesheet" href="issets/css/main.css">
     <title>Zo’rsan</title>
 
-    <meta name="description" content="">
+    <meta name="description" content="{!!$metateg->discription!!}">
 
     <!-- Facebook -->
     <meta property="og:title" content="">
-    <meta property="og:site_name" content="">
-    <meta property="og:description" content="">
+    <meta property="og:site_name" content="{{$metateg->name}}">
+    <meta property="og:description" content="{!!$metateg->discription!!}">
     <meta property="og:url" content="">
-    <meta property="og:image" content="img/meta.jpg">
+    <meta property="og:image" content="{{$metateg->photo}}">
     <meta property="og:type" content="website">
 
     <!-- Google Plus -->
-    <meta itemprop="name" content="">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="issets/img/meta.jpg">
+    <meta itemprop="name" content="{{$metateg->name}}">
+    <meta itemprop="description" content="{!!$metateg->discription!!}">
+    <meta itemprop="image" content="issets/{{$metateg->photo}}">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="">
-    <meta name="twitter:description" content="">
-    <meta name="twitter:image" content="issets/img/meta.jpg">
+    <meta name="twitter:title" content="{{$metateg->name}}">
+    <meta name="twitter:description" content="{!!$metateg->discription!!}">
+    <meta name="twitter:image" content="issets/{{$metateg->photo}}">
 </head>
 
 <body>
@@ -69,9 +69,10 @@
                     {{__('asd.Оставьте свои контактные данные, и наш менеджер расскажет больше интересных деталей')}}
                 </div>
                 <div class="feedback-form">
-                    <input type="text" placeholder="Ваше имя">
-                    <input type="tel" placeholder="Номер телефона" class="form_tel">
-                    <button class="btn">
+                    <input type="text" id="first_name" placeholder="Ваше имя">
+                    <input type="tel" id="phone" placeholder="Номер телефона" class="form_tel">
+                    <input id="token" value="{{ csrf_token() }}" type="hidden" required>
+                    <button class="btn" id="button" onclick="send1()" type="button">
                         {{__('asd.Отправить')}}
                     </button>
                 </div>
@@ -103,10 +104,10 @@
             <img src="issets/img/logo.svg" alt="Zo’rsan">
         </div>
         <div class="header-wrap">
-            <a href="#" class="header__tour btn" target="_blank" rel="nofollow">
-                <img src="issets/img/icons/360.svg" alt="ico">
-                <span>3D Тур</span>
-            </a>
+            <!--<a href="#" class="header__tour btn" target="_blank" rel="nofollow">-->
+            <!--    <img src="issets/img/icons/360.svg" alt="ico">-->
+            <!--    <span>3D Тур</span>-->
+            <!--</a>-->
             <div class="header-lang">
                 <a class="header-lang__item btn">@if($lang == 'uz') O’z @elseif($lang == 'ru') РУ @elseif($lang == 'en') EN @endif</a>
                 @if($lang != 'ru')<a href="/languages/ru" class="header-lang__item btn">
@@ -156,7 +157,7 @@
             </div>
             <div class="happy-item">
                 <div class="happy-item__text wow fadeInRight" data-wow-delay=".4s">
-                    {{__('asd.<span>16</span> Этажные здания')}}
+                    {!!__('asd.<span>16</span> Этажные здания')!!}
                 </div>
                 <div class="happy-item__img wow fadeInRight parallax" data-wow-delay=".4s">
                     <img src="{{$block->photo2}}" alt="happy">
@@ -170,7 +171,7 @@
     <section class="residence">
         <div class="section-content">
             <h2 class="section-title wow fadeInUp" data-wow-delay=".4s">
-                {{__('asd.Жилой комплекс <span>для</span> комфортной <span>жизни</span>')}}
+                {!!__('asd.Жилой комплекс <span>для</span> комфортной <span>жизни</span>')!!}
             </h2>
             <a href="{{$p->photo}}" download="" class="residence__btn btn wow fadeInUp" data-wow-delay=".6s">
                 {{__('asd.Скачать презентацию')}}
@@ -278,9 +279,10 @@
                     {!!__('asd.Запишитесь <span>на</span>просмотр <span>Zo’rsan</span>')!!}
                 </div>
                 <div class="consult-card__form">
-                    <input type="text" placeholder="Ваше имя">
-                    <input type="tel" placeholder="Номер телефона" class="form_tel">
-                    <button class="btn btn-yellow">
+                    <input type="text" id="first_name2" placeholder="{{__('asd.Ваше имя')}}">
+                    <input type="tel" id="phone2" placeholder="{{__('asd.Номер телефона')}}" class="form_tel">
+                    <input id="token" value="{{ csrf_token() }}" type="hidden" required>
+                    <button class="btn btn-yellow" id="button" onclick="send2()" type="button">
                         {{__('asd.Отправить')}}
                     </button>
                 </div>
@@ -306,7 +308,7 @@
         <div class="plans-wrap">
             <ul class="plans-head">
                 @foreach ($categories as $key=>$category)
-                    <li class="current">
+                    <li @if ( $key==0) class="current" @endif>
                         {{$category['name_'.$lang]}}
                     </li>
                 @endforeach
@@ -400,7 +402,7 @@
             </li>
             <li>
                 <a href="#location">
-                    {{__('asd.Расположение')}}
+                    {{__('asd.PРасположение')}}
                 </a>
             </li>
             <li>
@@ -428,17 +430,17 @@
         <div class="footer-bot">
             <ul class="footer-social">
                 <li>
-                    <a href="#" target="_blank" rel="nofollow">
+                    <a href="https://www.instagram.com/xonsaroyuz/" target="_blank" rel="nofollow">
                         {{__('asd.Instagram')}}
                     </a>
                 </li>
                 <li>
-                    <a href="#" target="_blank" rel="nofollow">
+                    <a href="https://www.facebook.com/xonsaroyuz" target="_blank" rel="nofollow">
                         {{__('asd.Facebook')}}
                     </a>
                 </li>
                 <li>
-                    <a href="#" target="_blank" rel="nofollow">
+                    <a href="https://t.me/XonSaroy" target="_blank" rel="nofollow">
                         {{__('asd.Telegram')}}
                     </a>
                 </li>
@@ -453,6 +455,66 @@
             </div>
         </div>
     </footer>
+    <script>
+        function send2() {
+    
+            let token = $("#token").val();
+            let name = $('#first_name2').val();
+            let phone = $('#phone2').val();
+            $.ajax({
+                token: token,
+                type: "get",
+                url: "/feedback",
+                data: {
+                    name: name,
+                    phone: phone,
+                },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+            });
+            setTimeout(() => {
+                $('.feedback-wrap').hide()
+                $('.feedback-done').show()
+                $("#first_name").val('');
+                $("#phone").val('');
+            }, 1000)
+            setTimeout(() => {
+                $('.feedback-wrap').show()
+                $('.feedback-done').hide()
+                $('.feedback').hide()
+            }, 3000)
+        }
+    </script>
+    <script>
+        function send1() {
+    
+            let token = $("#token").val();
+            let name = $('#first_name').val();
+            let phone = $('#phone').val();
+            $.ajax({
+                token: token,
+                type: "get",
+                url: "/feedback",
+                data: {
+                    name: name,
+                    phone: phone,
+                },
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+            });
+            setTimeout(() => {
+                $('.feedback-wrap').hide()
+                $('.feedback-done').show()
+                $("#first_name").val('');
+                $("#phone").val('');
+            }, 1000)
+            setTimeout(() => {
+                $('.feedback-wrap').show()
+                $('.feedback-done').hide()
+                $('.feedback').hide()
+            }, 3000)
+        }
+    </script>
     <script src="issets/js/jquery-3.4.1.min.js"></script>
     <script src="issets/js/jquery.inputmask.min.js"></script>
     <script src="issets/js/owl.carousel.js"></script>

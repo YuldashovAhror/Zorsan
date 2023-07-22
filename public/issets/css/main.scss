@@ -875,7 +875,7 @@ body {
 
 .consult {
 	background: linear-gradient(180deg, #213455 12.82%, rgba(33, 52, 85, 0.00) 100%);
-	padding-bottom: 6rem;
+	padding: 6rem 0;
 
 	&__title {
 		font-size: 6.5vw;
@@ -1195,6 +1195,7 @@ body {
 	@include center();
 	flex-direction: column;
 	text-align: center;
+	background: #FBFBFB;
 
 	&__logo {
 		display: block;

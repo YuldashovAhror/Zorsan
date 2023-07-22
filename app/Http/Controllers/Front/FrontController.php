@@ -6,6 +6,7 @@ use App\Models\Arxitektura;
 use App\Models\Block;
 use App\Models\Category;
 use App\Models\Gallery;
+use App\Models\MetaTeg;
 use App\Models\Presentation;
 use App\Models\ProductShow;
 use App\Models\SecondSlider;
@@ -25,9 +26,10 @@ class FrontController
         $p = Presentation::find(1);
         $secondslider = SecondSlider::find(1);
         $arxitektura = Arxitektura::find(1);
+        $metateg = MetaTeg::find(1);
         $productshows = ProductShow::orderBy('id', 'desc')->get();
         $galleries = Gallery::orderBy('id', 'desc')->get();
-        $categories = Category::with('products')->orderBy('id', 'desc')->get();
+        $categories = Category::with('products')->orderBy('id')->get();
         return view('front.welcome', [
             'block'=>$block,
             'lang'=>$lang,
@@ -36,6 +38,7 @@ class FrontController
             'arxitektura'=>$arxitektura,
             'galleries'=>$galleries,
             'categories'=>$categories,
+            'metateg'=>$metateg,
             'p'=>$p,
         ]);
     }

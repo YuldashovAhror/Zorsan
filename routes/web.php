@@ -1,15 +1,17 @@
 <?php
 
+use App\Http\Controllers\Dashboa\MetaTegController;
 use App\Http\Controllers\Dashboard\ArxitekturaController;
 use App\Http\Controllers\Dashboard\BlockController;
 use App\Http\Controllers\Dashboard\CategoryController;
+use App\Http\Controllers\Dashboard\FeedbackController as DashboardFeedbackController;
 use App\Http\Controllers\Dashboard\GalleryController;
 use App\Http\Controllers\Dashboard\PresentationController;
 use App\Http\Controllers\Dashboard\ProductController;
 use App\Http\Controllers\Dashboard\ProductShowController;
 use App\Http\Controllers\Dashboard\SecondSliderController;
 use App\Http\Controllers\Dashboard\WordController;
-use App\Models\Category;
+use App\Http\Controllers\Front\FeedbackController;
 use Illuminate\Support\Facades\Route;
 
 //Localization
@@ -31,7 +33,7 @@ Route::get('/languages/{loc}', function ($loc) {
 
 //Front
 Route::get('/', [\App\Http\Controllers\Front\FrontController::class, 'index'])->name('main');
-
+Route::get('/feedback', [FeedbackController::class, 'store']);
 //Dashboard
 Route::group(['prefix' => 'dashboard'], function (){
     Route::name('dashboard.')->group(function (){
@@ -55,6 +57,8 @@ Route::group(['prefix' => 'dashboard'], function (){
             return 'success';
         });
         Route::get('dashboard/words', [WordController::class, 'index'])->name('words.index');
+        Route::resource('/metateg', MetaTegController::class);
+        Route::resource('/feedback', DashboardFeedbackController::class);
 
     });
 });
